@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux' 
+import {
+  BrowserRouter as Router,
+  Switch, Route
+} from "react-router-dom"
 import './App.css';
+import { intializeEvent } from './reducers/eventReducer'
+import { useDispatch } from 'react-redux'
+import Event from './components/Event'
+import Events from './components/Events'
+import Profile from './components/Profile'
+import Navigation from './components/Navigation'
 
-function App() {
+const App = (props) => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    props.intializeEvent() 
+  },[dispatch]) 
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>     
+      <Router>
+        <Navigation/>
+        <Switch>
+          <Route path="/events/:id">
+            <Event/>
+          </Route>
+          <Route path="/profile">
+            <Profile/>
+          </Route>
+          <Route path="/">
+            <Events/>
+          </Route>
+          
+        </Switch>
+      </Router>
+      
     </div>
   );
 }
 
-export default App;
+const mapDispatchToProps = {
+  intializeEvent,
+}
+export default connect(
+  null,
+  mapDispatchToProps
+)(App)
