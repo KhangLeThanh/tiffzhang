@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux' 
 import { makeStyles } from '@material-ui/core/styles';
-
+import {
+    Link
+  } from "react-router-dom"
 import moment from 'moment'
 import {
     Typography,
@@ -85,7 +87,7 @@ const EventCard = (props) => {
                     <CategoryIcon className={classes.iconContent}/> {props.event.category[1].title}        
                 </Typography>
                 <Typography variant="body1" style={{color:'#fff'}}>
-                    <EventIcon className={classes.iconContent}/> <a href={`/events/${props.event.eid}`}>{props.event.name[props.event.language]}</a>
+                    <EventIcon className={classes.iconContent}/> <Link to={`/events/${props.event.eid}`}>{props.event.name[props.event.language]}</Link>
                 </Typography>
                 <Typography variant="body1" style={{color:'#fff'}}>
                     <AlarmOnIcon className={classes.iconContent}/> { moment(props.event.start_time_utc* 1000).format("DD/MM/YYYY") }
