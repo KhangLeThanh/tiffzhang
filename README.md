@@ -1,3 +1,9 @@
+## Create an event page for tiffzhang.
+
+In the event page, list of events will be shown. User can filter the events by event category. User can also add/remove an event to/from user's favourite list. 
+
+Link demo: https://khanglethanh.github.io/tiffzhang/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
