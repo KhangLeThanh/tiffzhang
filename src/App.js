@@ -20,7 +20,7 @@ const App = (props) => {
   
   return (
     <div>     
-      <Router>
+      <Router basename={`${process.env.PUBLIC_URL}/`}>
         <Navigation/>
         <Switch>
           <Route path="/events/:id">
