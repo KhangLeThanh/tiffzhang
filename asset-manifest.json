@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/tiffzhang/static/css/main.76e3f69a.chunk.css",
-    "main.js": "/tiffzhang/static/js/main.07576c1a.chunk.js",
-    "main.js.map": "/tiffzhang/static/js/main.07576c1a.chunk.js.map",
+    "main.js": "/tiffzhang/static/js/main.aaa30d52.chunk.js",
+    "main.js.map": "/tiffzhang/static/js/main.aaa30d52.chunk.js.map",
     "runtime-main.js": "/tiffzhang/static/js/runtime-main.a0ee0217.js",
     "runtime-main.js.map": "/tiffzhang/static/js/runtime-main.a0ee0217.js.map",
     "static/js/2.9f64134f.chunk.js": "/tiffzhang/static/js/2.9f64134f.chunk.js",
     "static/js/2.9f64134f.chunk.js.map": "/tiffzhang/static/js/2.9f64134f.chunk.js.map",
     "index.html": "/tiffzhang/index.html",
-    "precache-manifest.93d20bd7a2f493a97f423b9beb2d56f2.js": "/tiffzhang/precache-manifest.93d20bd7a2f493a97f423b9beb2d56f2.js",
+    "precache-manifest.02bdf21e1d89c0cbba71069ad928681a.js": "/tiffzhang/precache-manifest.02bdf21e1d89c0cbba71069ad928681a.js",
     "service-worker.js": "/tiffzhang/service-worker.js",
     "static/css/main.76e3f69a.chunk.css.map": "/tiffzhang/static/css/main.76e3f69a.chunk.css.map",
     "static/js/2.9f64134f.chunk.js.LICENSE.txt": "/tiffzhang/static/js/2.9f64134f.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a0ee0217.js",
     "static/js/2.9f64134f.chunk.js",
     "static/css/main.76e3f69a.chunk.css",
-    "static/js/main.07576c1a.chunk.js"
+    "static/js/main.aaa30d52.chunk.js"
   ]
 }

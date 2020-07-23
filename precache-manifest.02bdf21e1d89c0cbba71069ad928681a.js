@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "802bd48a5573587355eba14f15cf479c",
+    "revision": "a6c0597e99e0137a56ac9da3898b5af7",
     "url": "/tiffzhang/index.html"
   },
   {
-    "revision": "485f4ea16d5e6c69d641",
+    "revision": "3941c3ce40c6b215f9c1",
     "url": "/tiffzhang/static/css/main.76e3f69a.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/tiffzhang/static/js/2.9f64134f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "485f4ea16d5e6c69d641",
-    "url": "/tiffzhang/static/js/main.07576c1a.chunk.js"
+    "revision": "3941c3ce40c6b215f9c1",
+    "url": "/tiffzhang/static/js/main.aaa30d52.chunk.js"
   },
   {
     "revision": "2a556aad3bb1e4d67ee7",
