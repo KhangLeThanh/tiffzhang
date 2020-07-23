@@ -107,11 +107,12 @@ const useStyles = makeStyles((theme) => ({
         textTransform:'none',
         '&:hover':{
             backgroundColor:'rgba(60, 12, 88,0.8)',
+            
         },
 
         '&:disabled' :{
             color: '#fff',
-            backgroundColor:'rgba(60, 12, 88,0.4)',
+            backgroundColor:'rgba(60, 12, 88,0.4) !important',
 
         }
     }
