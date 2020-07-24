@@ -67,7 +67,6 @@ const EventCard = (props) => {
 
     }
   return(
-    <div>
         <Card key={props.event.eid} className={classes.card}>
             <CardHeader
                 avatar={
@@ -95,7 +94,6 @@ const EventCard = (props) => {
                 
             </CardContent>       
         </Card>
-    </div>
   )
 }
 

@@ -15,10 +15,10 @@ import {
   } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import LinkIcon from '@material-ui/icons/Link';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import moment from 'moment'
+import banner from '../banner.jpg'
 
 import { addEvent, removedEvent } from '../reducers/favouriteReducer'
 
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign:'center'
       },
     sectionBanner:{
-        backgroundImage:'url(http://tiffzhang.com/startup/img/bg/69.jpg)',
+        backgroundImage:`url(${banner})`,
         paddingTop:'10em',
         paddingBottom:'10em',
         backgroundPosition:'center center',
@@ -146,11 +146,9 @@ const Event = (props) => {
                                         <Typography variant="body1" style={{color:'#fff'}}>
                                             <HomeIcon className={classes.iconContent}/> Location: {event.location[Object.keys(event.address)]}        
                                         </Typography>
+                                        
                                         <Typography variant="body1" style={{color:'#fff'}}>
-                                            <CalendarTodayIcon className={classes.iconContent}/> Time: { moment(event.start_time_utc* 1000).format("DD/MM/YYYY") } -{ moment(event.end_time_utc* 1000).format("DD/MM/YYYY") }        
-                                        </Typography>
-                                        <Typography variant="body1" style={{color:'#fff'}}>
-                                            <LinkIcon className={classes.iconContent}/> <a href={event.enrollment_url}>{event.enrollment_url}</a>
+                                            <LinkIcon className={classes.iconContent}/> <a href={event.enrollment_url} target="_blank" rel="noopener noreferrer">{event.enrollment_url}</a>
                                         </Typography>
                                     
                                         

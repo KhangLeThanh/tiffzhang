@@ -7,6 +7,8 @@ import {
     Grid,
     Avatar
   } from '@material-ui/core';
+import banner from '../banner.jpg'
+import avatar from '../avatar.png'
 
 const useStyles = makeStyles((theme) => ({
     grid: {
@@ -16,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         zIndex:'9',
       },
       sectionBanner:{
-        backgroundImage:'url(http://tiffzhang.com/startup/img/bg/69.jpg)',
+        backgroundImage:`url(${banner})`,
         height:'350px;',
         backgroundPosition:'center center',
         backgroundSize:'cover',
@@ -85,7 +87,7 @@ const Profile = () => {
     <div>
         <section className={classes.sectionBanner}>
                 <div className={classes.profileImage}>
-                    <Avatar alt="Penny" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgTFoq8f4Fp9XdYczjkEZiyuEgjYk_jSU2DA&usqp=CAU" className={classes.small} />
+                    <Avatar alt="Penny" src={avatar} className={classes.small} />
                 </div>
                 <Typography variant="h2" style={{color:'#fff'}}>
                     Penny

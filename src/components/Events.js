@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { connect } from 'react-redux' 
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,14 +6,14 @@ import {
     Typography,
     Grid,
     Divider,
-    Button
   } from '@material-ui/core';
 import moment from 'moment'
-import FilterChange from '../components/FilterChange'
+import FilterCategory from '../components/FilterCategory'
+import FilterMonth from '../components/FilterMonth'
 import FavouriteEvent from '../components/FavouriteEvent'
 import EventCard from '../components/EventCard'
 import { addEvent, removedEvent } from '../reducers/favouriteReducer'
-
+import banner from '../banner.jpg'
 const useStyles = makeStyles((theme) => ({
     grid: {
         maxWidth: 1000,
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     sectionBanner:{
-        backgroundImage:'url(http://tiffzhang.com/startup/img/bg/69.jpg)',
+        backgroundImage:`url(${banner})`,
         height:'350px;',
         backgroundPosition:'center center',
         backgroundSize:'cover',
@@ -88,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
             paddingRight:'15px'
         }
     },
+
     listSection: {
         paddingTop: '10px',       
         clear:'both'
@@ -99,23 +100,8 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         margin: '0 auto',
     },
-   
-    button:{
-        backgroundColor:'rgb(60, 12, 88)',
-        color:'#fff',
-        fontFamily:' Sans Pro, Oswald, "Josefin Sans", Verdana, "Lucida Grande"',
-        textTransform:'none',
-        '&:hover':{
-            backgroundColor:'rgba(60, 12, 88,0.8)',
-            
-        },
-
-        '&:disabled' :{
-            color: '#fff',
-            backgroundColor:'rgba(60, 12, 88,0.4) !important',
-
-        }
-    }
+    
+    
 }));
 
 const Events = () => {
@@ -135,18 +121,6 @@ const Events = () => {
 
         group_event = Object.keys(groups).map(function(k){ return groups[k]; });
 
-    }
-       
-    // getting current month
-    let current_date = new Date();
-    let current_month = ((current_date.getMonth() + 1) < 10 ? '0' : '') + (current_date.getMonth() + 1);
-    const [count, setCount] = useState(parseInt(current_month));
- 
-    const handleNext = ()=>{
-        count > 12 ? setCount(1) : setCount(count => count + 1);
-    }
-    const handlePrev = ()=>{
-        count > 12 ? setCount(1) : setCount(count => count - 1);     
     }
     return(
         <div>
@@ -183,40 +157,43 @@ const Events = () => {
                             </Typography>
                         </Grid>
                         <Grid item xs={6} sm={4} md={4} className={classes.gridFilter}>    
-                            <FilterChange/>
+                            <FilterCategory/>
                         </Grid> 
-                        {group_event.length &&
-                            <Grid item xs={6} sm={4} md={4} style={{textAlign:'right'}}>
-                                <Button  className={classes.button} style={{marginRight:'5px'}}disabled ={group_event[0].month == count ? true : undefined} onClick={() => handlePrev()}> Prev </Button>
-                                <Button  className={classes.button} disabled ={group_event[group_event.length - 1].month == count ? true : undefined} onClick={() => handleNext()}> Next</Button>
-                            </Grid>   
-                        }
+                        <Grid item xs={6} sm={4} md={4} style={{textAlign:'right'}}>    
+                            <FilterMonth group={group_event}/>
+                        </Grid> 
+                           
                         <Grid item xs={12} sm={12} md={12}>
                             {group_event.length > 0 ?
                             <div className={classes.listSection}>   
-                                <div className={classes.list}>
-                                    {getStore.filter ==='All' ?
-                                        group_event.map(event =>
-                                            event.month == count &&
-                                                event.data.map(item=>
-                                                    <div key={item.eid}>
-                                                        <EventCard event={item}/>   
-                                                    </div>
-                                                )
+                                <div className ={classes.list}>
+                                    {getStore.category ==='All' ?
+                                        group_event
+                                            .map(event =>
+                                                event.month === getStore.month 
+                                                    &&
+                                                   
+                                                    event.data
+                                                        .sort((a, b) => new Date(b.start_time_utc) - new Date(a.start_time_utc))
+                                                        .map(item=>
+                                                            <EventCard key={item.eid} event={item}/>   
+                                                    )                                                      
+                                            
                                     )       
                                     :
                                         group_event.map(event =>
-                                            event.month == count &&
+                                            event.month === getStore.month 
+                                                &&                                           
                                                 event.data
-                                                .filter(
-                                                    (item) =>
-                                                    item.category[1].title === getStore.filter 
-                                                )    
-                                                .map(item=>
-                                                    <div key={item.eid}>
-                                                        <EventCard event={item}/>
-                                                    </div>
-                                                )                                  
+                                                    .filter(
+                                                        (item) =>
+                                                        item.category[1].title === getStore.category 
+                                                    )    
+                                                    .sort((a, b) => new Date(b.start_time_utc) - new Date(a.start_time_utc))
+                                                    .map(item=>
+                                                        <EventCard key={item.eid} event={item}/>
+                                                )
+                                                                            
                                         )
                                     }
                                     </div>

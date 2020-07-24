@@ -4,10 +4,10 @@ import _ from 'lodash';
 import { connect } from 'react-redux' 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { filterChange } from '../reducers/filterReducer'
+import { filterChange } from '../reducers/filterCategory'
 const useStyles = makeStyles((theme) => ({
     selectForm:{
-        backgroundColor:'#643480',
+        backgroundColor:'#643480 !important',
         padding:'5px 10px',
         color:'#fff',
         borderRadius:'5px',
@@ -15,9 +15,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize:'1em'
     }
 }))
-const FilterChange = (props) => {
+const FilterCategory = (props) => {
     const events = useSelector(state=>state.events) 
-    const filterEvent = useSelector(state=>state.filter) 
+    const filterEvent = useSelector(state=>state.category) 
 
     const classes = useStyles();
 
@@ -51,4 +51,4 @@ const mapDispatchToProps = {
   export default connect(
     null,
     mapDispatchToProps
-  )(FilterChange)
+  )(FilterCategory)

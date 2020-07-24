@@ -4,14 +4,16 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 
 import eventReducer  from './reducers/eventReducer'
-import filterReducer  from './reducers/filterReducer'
+import filterCategory  from './reducers/filterCategory'
 import favouriteReducer  from './reducers/favouriteReducer'
+import filterMonth  from './reducers/filterMonth'
 
 
 const reducer = combineReducers({
     events: eventReducer,
-    filter: filterReducer,
-    favourite: favouriteReducer
+    category: filterCategory,
+    favourite: favouriteReducer,
+    month:filterMonth
 
 })
 const persistedState = localStorage.getItem('reduxState') 

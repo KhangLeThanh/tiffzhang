@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux' 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch, Route
 } from "react-router-dom"
 import './App.css';
@@ -20,7 +20,7 @@ const App = (props) => {
   
   return (
     <div>     
-      <Router basename={`${process.env.PUBLIC_URL}/`}>
+      <Router>
         <Navigation/>
         <Switch>
           <Route path="/events/:id">
