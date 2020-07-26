@@ -34,6 +34,12 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
         backgroundColor: '#92c377',
     },
+    linkCard:{
+        textDecoration:'none',
+        "& p":{
+            color:'#000'
+        }
+    },
     cardContent:{
         fontFamily:'Georgia, serif',
 
@@ -87,20 +93,22 @@ const EventCard = (props) => {
                     }
                 />
             </CardActions>
-            <CardActionArea component={Link} to={`/events/${props.event.eid}`}>
-                <CardContent className={classes.cardContent}>
-                    <Typography variant="body1">
-                        <CategoryIcon className={classes.iconContent}/>Category: {props.event.category[1].title}        
-                    </Typography>
-                    <Typography variant="body1">
-                        <EventIcon className={classes.iconContent}/>Event: <Link to={`/events/${props.event.eid}`}>{props.event.name[props.event.language]}</Link>
-                    </Typography>
-                    <Typography variant="body1">
-                        <AlarmOnIcon className={classes.iconContent}/>Time: { moment(props.event.start_time_utc* 1000).format("DD/MM/YYYY") } - { moment(props.event.end_time_utc* 1000).format("DD/MM/YYYY") }
-                    </Typography>
-                    
-                </CardContent>     
-            </CardActionArea>      
+            <Link to={`/events/${props.event.eid}`} className={classes.linkCard}>
+                <CardActionArea>
+                    <CardContent className={classes.cardContent}>
+                        <Typography variant="body1">
+                            <CategoryIcon className={classes.iconContent}/>Category: {props.event.category[1].title}        
+                        </Typography>
+                        <Typography variant="body1">
+                            <EventIcon className={classes.iconContent}/>Event:{props.event.name[props.event.language]}
+                        </Typography>
+                        <Typography variant="body1">
+                            <AlarmOnIcon className={classes.iconContent}/>Time: { moment(props.event.start_time_utc* 1000).format("DD/MM/YYYY") } - { moment(props.event.end_time_utc* 1000).format("DD/MM/YYYY") }
+                        </Typography>
+                        
+                    </CardContent>     
+                </CardActionArea> 
+            </Link>     
         </Card>
   )
 }

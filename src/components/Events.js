@@ -119,7 +119,6 @@ const Events = (props) => {
         }, {})
 
         group_event = Object.keys(groups).map(function(k){ return groups[k]; });
-
     }
     return(
         <div>
