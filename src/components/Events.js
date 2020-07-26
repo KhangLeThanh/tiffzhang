@@ -104,16 +104,15 @@ const useStyles = makeStyles((theme) => ({
     
 }));
 
-const Events = () => {
+const Events = (props) => {
    
-    const events = useSelector(state=>state.events) 
     const classes = useStyles();
     const getStore = useSelector(state=>state) 
     // grouping event by month
     let groupKey = 0;
     let group_event= [];
-    if(events.length > 0){
-        let groups = events.reduce((r, event) => {
+    if(props.events.length > 0){
+        let groups = props.events.reduce((r, event) => {
             let date = moment(event.start_time_utc* 1000).format("YYYY-MM-DD").split(('-'))[1];
             (r[date])? r[date].data.push(event) : r[date] = {group: String(groupKey++), data: [event], month: date};
             return r;

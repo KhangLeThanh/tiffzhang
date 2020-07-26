@@ -79,50 +79,48 @@ const Navigation = () => {
       }, []);
   
     return(
-        <div className={navbar}>
-        
+        <div className={navbar}>   
             <div  className="inner">
-                    <Link to="/" className={classes.logoLink}>
-                        <Typography variant="h6" className={classes.title}>
-                            <span className="fa fa-bolt" aria-hidden="true" style={{fontSize:'25px'}}/>
-                            Paperstr
-                        </Typography>
-                    </Link>
-                    <div className={classes.wrapperMenuLink}>
-                        <ul className={classes.menuLink}>
-                            <li>
-                                <Link to="/">
-                                    Home
-                                </Link>
-                            </li>
-                            <li>
+                <Link to="/" className={classes.logoLink}>
+                    <Typography variant="h6" className={classes.title}>
+                        <span className="fa fa-bolt" aria-hidden="true" style={{fontSize:'25px'}}/>
+                        Paperstr
+                    </Typography>
+                </Link>
+                <div className={classes.wrapperMenuLink}>
+                    <ul className={classes.menuLink}>
+                        <li>
                             <Link to="/">
-                                About
+                                Home
                             </Link>
-                            </li>
-                            <li>
+                        </li>
+                        <li>
+                        <Link to="/">
+                            About
+                        </Link>
+                        </li>
+                        <li>
                             <Link to="/">
-                                Our Teaam
+                                Our Team
                             </Link>
-                            </li>
-                            <li>
+                        </li>
+                        <li>
                             <Link to="/">
                                 Try Now
                             </Link>
-                            </li>
-                            <li>
+                        </li>
+                        <li>
                             <Link to="/">
                                 Contact Us
                             </Link>
-                            </li>
-                            <li>
+                        </li>
+                        <li>
                             <Link to="/profile">
                                 My Profile
                             </Link>
-                            </li>
-
-                        </ul>                                                  
-                    </div>
+                        </li>
+                    </ul>                                                  
+                </div>
             </div>
         </div>
     )

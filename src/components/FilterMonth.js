@@ -24,7 +24,6 @@ const FilterMonth = (props) => {
     const handleChange = (e) =>{
         props.monthChange(e.target.value);
     }
-    console.log(props)
     
     return(
         <div>      

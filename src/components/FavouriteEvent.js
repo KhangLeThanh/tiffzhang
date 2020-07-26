@@ -10,6 +10,8 @@ import {
     Card,
     CardContent,
     CardHeader,
+    CardActionArea,
+    CardActions,
     Avatar,
   } from '@material-ui/core';
 import CategoryIcon from '@material-ui/icons/Category';
@@ -17,7 +19,6 @@ import EventIcon from '@material-ui/icons/Event';
 import AlarmOnIcon from '@material-ui/icons/AlarmOn';
 import StarIcon from '@material-ui/icons/Star';
 import {  removedEvent } from '../reducers/favouriteReducer'
-
 import { useSelector } from 'react-redux'
 const useStyles = makeStyles((theme) => ({
     listSection: {
@@ -34,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
     card: {
         width: 300,
         margin: 10,
-        backgroundColor: 'rgb(100, 52, 128)',
+        backgroundColor: '#fff',
+        boxShadow:'0px 2px 5px 3px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'
     },
     avatar: {
         backgroundColor: '#92c377',
@@ -49,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
            
         },   
         "& a":{
-            color:'#fff'
+            color:'rgb(100, 52, 128)'
         }
     },
     iconContent:{
@@ -58,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight:'2px'
     },
     iconStar:{
-        color:'#fff',
+        color:'rgb(100, 52, 128)',
         "&:hover":{
             cursor:'pointer'
         }
@@ -69,45 +71,48 @@ const FavouriteEvent = (props) => {
     const classes = useStyles();
     const handleRemove = (data)=>{
         props.removedEvent(data)
-
     }
-  
-
   return(
     <div className={classes.listSection}>
         <div className={classes.list}>
-        {favourite_event.length > 0 ?
-            favourite_event.map(item =>
-                <Card key={item.eid} className={classes.card}>
-                    <CardHeader
-                        avatar={
-                            <Avatar aria-label="recipe" className={classes.avatar}>
-                                {item.name[item.language].charAt(0)}
-                            </Avatar>
-                        }
-                        action={
-                            <StarIcon className={classes.iconStar} onClick={() => handleRemove(item)}/>
-                        }
-                    />
-                    <CardContent className={classes.cardContent}>
-                        <Typography variant="body1" style={{color:'#fff'}}>
-                            <CategoryIcon className={classes.iconContent}/> {item.category[1].title}        
-                        </Typography>
-                        <Typography variant="body1" style={{color:'#fff'}}>
-                            <EventIcon className={classes.iconContent}/> <Link to={`/events/${item.eid}`}>{item.name[item.language]}</Link>
-                        </Typography>
-                        <Typography variant="body1" style={{color:'#fff'}}>
-                            <AlarmOnIcon className={classes.iconContent}/> { moment(item.start_time_utc* 1000).format("DD/MM/YYYY") }
-                        </Typography>      
-        
-                    </CardContent>                            
-                </Card>
-            )
-        :
-        <Typography variant="h5">
-            Empty List
-        </Typography>
-        }
+            {favourite_event.length > 0 ?
+                favourite_event
+                    .sort((a, b) => new Date(a.start_time_utc) - new Date(b.start_time_utc))    
+                    .map(item =>
+                        <Card key={item.eid} className={classes.card}>
+                            <CardActions>
+                                <CardHeader
+                                    style={{width:'100%'}}
+                                    avatar={
+                                        <Avatar aria-label="recipe" className={classes.avatar}>
+                                            {item.name[item.language].charAt(0)}
+                                        </Avatar>
+                                    }
+                                    action={
+                                        <StarIcon className={classes.iconStar} onClick={() => handleRemove(item)}/>
+                                    }
+                                />
+                            </CardActions>
+                            <CardActionArea component={Link} to={`/events/${item.eid}`}>
+                                <CardContent className={classes.cardContent}>
+                                    <Typography variant="body1">
+                                        <CategoryIcon className={classes.iconContent}/>Category: {item.category[1].title}        
+                                    </Typography>
+                                    <Typography variant="body1">
+                                        <EventIcon className={classes.iconContent}/>Event: <Link to={`/events/${item.eid}`}>{item.name[item.language]}</Link>
+                                    </Typography>
+                                    <Typography variant="body1">
+                                        <AlarmOnIcon className={classes.iconContent}/>Time: { moment(item.start_time_utc* 1000).format("DD/MM/YYYY") } - { moment(item.end_time_utc* 1000).format("DD/MM/YYYY") }
+                                    </Typography>                        
+                                </CardContent>  
+                            </CardActionArea>         
+                        </Card>
+                    )
+            :
+            <Typography variant="h5">
+                Empty List
+            </Typography>
+            }
         </div>
     </div>
   )

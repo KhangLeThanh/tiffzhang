@@ -10,6 +10,8 @@ import {
     Card,
     CardContent,
     CardHeader,
+    CardActionArea,
+    CardActions,
     Avatar,
   } from '@material-ui/core';
 import CategoryIcon from '@material-ui/icons/Category';
@@ -26,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
     card: {
         width: 300,
         margin: 10,
-        backgroundColor: 'rgb(100, 52, 128)',
+        backgroundColor: '#fff',
+        boxShadow:'0px 2px 5px 3px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'
     },
     avatar: {
         backgroundColor: '#92c377',
@@ -41,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
            
         },   
         "& a":{
-            color:'#fff'
+            color:'rgb(100, 52, 128)'
         }
     },
     iconContent:{
@@ -50,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight:'2px'
     },
     iconStar:{
-        color:'#fff',
+        color:'rgb(100, 52, 128)',
         "&:hover":{
             cursor:'pointer'
         }
@@ -68,31 +71,36 @@ const EventCard = (props) => {
     }
   return(
         <Card key={props.event.eid} className={classes.card}>
-            <CardHeader
-                avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-                    {props.event.name[props.event.language].charAt(0)}
-                    </Avatar>
-                }
-                action={
-                    !_.some(favourite_event, props.event) ?
-                        <StarBorderIcon className={classes.iconStar} onClick={() => handleAdd(props.event)}/>
-                    :
-                        <StarIcon className={classes.iconStar} onClick={() => handleRemove(props.event)}/>      
-                }
-            />
-            <CardContent className={classes.cardContent}>
-                <Typography variant="body1" style={{color:'#fff'}}>
-                    <CategoryIcon className={classes.iconContent}/> {props.event.category[1].title}        
-                </Typography>
-                <Typography variant="body1" style={{color:'#fff'}}>
-                    <EventIcon className={classes.iconContent}/> <Link to={`/events/${props.event.eid}`}>{props.event.name[props.event.language]}</Link>
-                </Typography>
-                <Typography variant="body1" style={{color:'#fff'}}>
-                    <AlarmOnIcon className={classes.iconContent}/> { moment(props.event.start_time_utc* 1000).format("DD/MM/YYYY") }
-                </Typography>
-                
-            </CardContent>       
+            <CardActions>
+                <CardHeader
+                    style={{width:'100%'}}
+                    avatar={
+                        <Avatar aria-label="recipe" className={classes.avatar}>
+                        {props.event.name[props.event.language].charAt(0)}
+                        </Avatar>
+                    }
+                    action={
+                        !_.some(favourite_event, props.event) ?
+                            <StarBorderIcon className={classes.iconStar} onClick={() => handleAdd(props.event)}/>
+                        :
+                            <StarIcon className={classes.iconStar} onClick={() => handleRemove(props.event)}/>      
+                    }
+                />
+            </CardActions>
+            <CardActionArea component={Link} to={`/events/${props.event.eid}`}>
+                <CardContent className={classes.cardContent}>
+                    <Typography variant="body1">
+                        <CategoryIcon className={classes.iconContent}/>Category: {props.event.category[1].title}        
+                    </Typography>
+                    <Typography variant="body1">
+                        <EventIcon className={classes.iconContent}/>Event: <Link to={`/events/${props.event.eid}`}>{props.event.name[props.event.language]}</Link>
+                    </Typography>
+                    <Typography variant="body1">
+                        <AlarmOnIcon className={classes.iconContent}/>Time: { moment(props.event.start_time_utc* 1000).format("DD/MM/YYYY") } - { moment(props.event.end_time_utc* 1000).format("DD/MM/YYYY") }
+                    </Typography>
+                    
+                </CardContent>     
+            </CardActionArea>      
         </Card>
   )
 }

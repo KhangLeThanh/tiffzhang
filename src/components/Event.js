@@ -1,9 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux' 
-import {
-  useParams
-} from "react-router-dom"
-
 import { makeStyles } from '@material-ui/core/styles';
 import {
     Typography,
@@ -17,7 +13,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import LinkIcon from '@material-ui/icons/Link';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import moment from 'moment'
 import banner from '../banner.jpg'
 
 import { addEvent, removedEvent } from '../reducers/favouriteReducer'
@@ -67,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     },
     card: {
         margin: 10,
-        backgroundColor: 'rgb(100, 52, 128)',
+        backgroundColor: '#fff',
     },
     avatar: {
         backgroundColor: '#92c377',
@@ -91,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
             }
         },   
         "& a":{
-            color:'#fff'
+            color:'rgb(100, 52, 128)'
         }
     },
     iconContent:{
@@ -100,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight:'2px'
     },
     iconStar:{
-        color:'#fff',
+        color:'rgb(100, 52, 128)',
         "&:hover":{
             cursor:'pointer'
         }
@@ -108,12 +103,9 @@ const useStyles = makeStyles((theme) => ({
 }))
 const Event = (props) => {
 
-    const events = useSelector(state=>state.events) 
     const favourite_event = useSelector(state=>state.favourite) 
     const classes = useStyles();
 
-    const id = useParams().id
-    const event = events.find(n => n.eid === Number(id)) 
     const handleAdd = (data)=>{
         props.addEvent(data)
     }
@@ -127,28 +119,28 @@ const Event = (props) => {
                 <div className={classes.grid}>
                     <Grid container>
                         <Grid item xs={12} sm={12} md={12}>
-                            {event !== undefined ? 
-                                <Card key={event.eid} className={classes.card}>
+                            {props.event !== undefined ? 
+                                <Card key={props.event.eid} className={classes.card}>
                                     <CardHeader
                                         avatar={
                                             <Avatar aria-label="recipe" className={classes.avatar}>
-                                            {event.name[event.language].charAt(0)}
+                                            {props.event.name[props.event.language].charAt(0)}
                                             </Avatar>
                                         }
                                         action={
-                                            !_.some(favourite_event, event) ?
-                                                <StarBorderIcon className={classes.iconStar} onClick={() => handleAdd(event)}/>
+                                            !_.some(favourite_event, props.event) ?
+                                                <StarBorderIcon className={classes.iconStar} onClick={() => handleAdd(props.event)}/>
                                             :
-                                                <StarIcon className={classes.iconStar} onClick={() => handleRemove(event)}/>      
+                                                <StarIcon className={classes.iconStar} onClick={() => handleRemove(props.event)}/>      
                                         }
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography variant="body1" style={{color:'#fff'}}>
-                                            <HomeIcon className={classes.iconContent}/> Location: {event.location[Object.keys(event.address)]}        
+                                        <Typography variant="body1">
+                                            <HomeIcon className={classes.iconContent}/> Location: {props.event.location[Object.keys(props.event.address)]}        
                                         </Typography>
                                         
-                                        <Typography variant="body1" style={{color:'#fff'}}>
-                                            <LinkIcon className={classes.iconContent}/> <a href={event.enrollment_url} target="_blank" rel="noopener noreferrer">{event.enrollment_url}</a>
+                                        <Typography variant="body1">
+                                            <LinkIcon className={classes.iconContent}/> Registration link: <a href={props.event.enrollment_url} target="_blank" rel="noopener noreferrer">{props.event.enrollment_url}</a>
                                         </Typography>
                                     
                                         
