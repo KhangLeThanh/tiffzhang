@@ -6,28 +6,28 @@
   height: 40vmin;
   pointer-events: none;
 }
-.navbar{
-  position:absolute;
-  height:100px; 
-  z-index:999;
-  background-color:transparent;
-  width:100%;
+.navbar {
+  position: absolute;
+  height: 100px;
+  z-index: 999;
+  background-color: transparent;
+  width: 100%;
 }
-.navbar2{
-  position:fixed;
-  height:50px; 
-  z-index:999;
-  background-color:rgb(100, 52, 128);
-  width:100%;
+.navbar2 {
+  position: fixed;
+  height: 50px;
+  z-index: 999;
+  background-color: rgb(100, 52, 128);
+  width: 100%;
 }
 
-.inner{
-  max-width:1000px;
-  margin:auto;
-  padding:30px;
+.inner {
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px;
 }
-.navbar2 .inner{
-  padding:5px;
+.navbar2 .inner {
+  padding: 5px;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -50,8 +50,9 @@
   color: #61dafb;
 }
 @media only screen and (max-width: 600px) {
-  .navbar,.navbar2 {
-    text-align:center
+  .navbar,
+  .navbar2 {
+    text-align: center;
   }
 }
 @keyframes App-logo-spin {

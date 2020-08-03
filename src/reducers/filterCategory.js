@@ -1,18 +1,17 @@
+const filterCategory = (state = "All", action) => {
+  switch (action.type) {
+    case "SET_FILTER":
+      return action.filter;
+    default:
+      return state;
+  }
+};
 
-const filterCategory = (state = 'All', action) => {
-    switch (action.type) {
-        case 'SET_FILTER':
-          return action.filter
-        default:
-          return state
-    }
-  }
-  
-  export const filterChange = filter => {
-    return {
-      type: 'SET_FILTER',
-      filter,
-    }
-  }
-  
-  export default filterCategory
+export const filterChange = (filter) => {
+  return {
+    type: "SET_FILTER",
+    filter,
+  };
+};
+
+export default filterCategory;
