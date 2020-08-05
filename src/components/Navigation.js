@@ -99,7 +99,7 @@ const Navigation = () => {
               <Link to="/">Try Now</Link>
             </li>
             <li>
-              <Link to="/">Contact Us</Link>
+              <Link to="/events">Events</Link>
             </li>
             <li>
               <Link to="/profile">My Profile</Link>

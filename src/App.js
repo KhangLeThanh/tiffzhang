@@ -29,6 +29,9 @@ const App = (props) => {
         <Route path="/profile">
           <Profile />
         </Route>
+        <Route path="/events">
+          <Events events={events} />
+        </Route>
         <Route path="/">
           <Events events={events} />
         </Route>

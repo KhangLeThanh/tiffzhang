@@ -24,7 +24,6 @@ const FilterMonth = (props) => {
   const handleChange = (e) => {
     props.monthChange(e.target.value);
   };
-
   return (
     <div>
       <select
@@ -37,7 +36,7 @@ const FilterMonth = (props) => {
         </option>
 
         {props.group.map((item) => (
-          <option key={item.group} value={item.month}>
+          <option key={item.group} value={item.month} selected={item.month === filterMonth}>
             {item.month}
           </option>
         ))}
