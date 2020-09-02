@@ -28,7 +28,7 @@ const FilterMonth = (props) => {
     <div>
       <select
         className={classes.selectForm}
-        defaultValue={filterMonth}
+        defaultValue="07"
         onChange={handleChange}
       >
         <option value="" disabled>

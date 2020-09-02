@@ -108,19 +108,21 @@ const Events = (props) => {
   let group_event = [];
   if (props.events.length > 0) {
     let groups = props.events.reduce((r, event) => {
-      let date = moment(event.start_time_utc * 1000)
+      let date = moment(event.start_time_utc)
         .format("YYYY-MM-DD")
         .split("-")[1];
       r[date]
         ? r[date].data.push(event)
         : (r[date] = { group: String(groupKey++), data: [event], month: date });
       return r;
+
     }, {});
 
     group_event = Object.keys(groups).map(function (k) {
       return groups[k];
     });
   }
+
   return (
     <div>
       <section className={classes.sectionBanner}>

@@ -1,7 +1,5 @@
-let current_date = new Date();
-let current_month =
-  (current_date.getMonth() + 1 < 10 ? "0" : "") + (current_date.getMonth() + 1);
-const filterMonth = (state = current_month, action) => {
+
+const filterMonth = (state = "07", action) => {
   switch (action.type) {
     case "FILTER_MONTH":
       return action.filter;

@@ -111,10 +111,10 @@ const EventCard = (props) => {
             <Typography variant="body1">
               <AlarmOnIcon className={classes.iconContent} />
               Time:{" "}
-              {moment(props.event.start_time_utc * 1000).format(
+              {moment(props.event.start_time_utc).format(
                 "DD/MM/YYYY"
               )} -{" "}
-              {moment(props.event.end_time_utc * 1000).format("DD/MM/YYYY")}
+              {moment(props.event.end_time_utc).format("DD/MM/YYYY")}
             </Typography>
           </CardContent>
         </CardActionArea>

@@ -2,8 +2,7 @@ import eventService from "../services/event";
 const eventReducer = (state = [], action) => {
   switch (action.type) {
     case "INIT_EVENT":
-      return Object.values(action.data.results);
-
+      return Object.values(action.data);
     default:
       return state;
   }
