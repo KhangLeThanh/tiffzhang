@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
 const Event = (props) => {
   const favourite_event = useSelector((state) => state.favourite);
   const classes = useStyles();
-
+  console.log("test",props)
   const handleAdd = (data) => {
     props.addEvent(data);
   };

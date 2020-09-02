@@ -101,6 +101,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Events = (props) => {
+  console.log("a",props)
   const classes = useStyles();
   const getStore = useSelector((state) => state);
   // grouping event by month

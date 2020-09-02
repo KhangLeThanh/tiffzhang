@@ -116,11 +116,11 @@ const FavouriteEvent = (props) => {
                       <Typography variant="body1">
                         <AlarmOnIcon className={classes.iconContent} />
                         Time:{" "}
-                        {moment(item.start_time_utc * 1000).format(
+                        {moment(item.start_time_utc).format(
                           "DD/MM/YYYY"
                         )}{" "}
                         -{" "}
-                        {moment(item.end_time_utc * 1000).format("DD/MM/YYYY")}
+                        {moment(item.end_time_utc).format("DD/MM/YYYY")}
                       </Typography>
                     </CardContent>
                   </CardActionArea>

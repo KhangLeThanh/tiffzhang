@@ -16,9 +16,9 @@ const App = (props) => {
   }, [dispatch, props]);
   const events = useSelector((state) => state.events);
   const match = useRouteMatch("/events/:id");
-  const event = match
-    ? events.find((event) => event.eid === Number(match.params.id))
-    : null;
+
+  const event = match ? events.find((event) => event.eid === Number(match.params.id)) : null;
+
   return (
     <div>
       <Navigation />
